@@ -14,6 +14,10 @@ namespace v0630
     {
         int vx = rand.Next(-10,11);
         int vy = rand.Next(-10, 11);
+        int vx3 = rand.Next(-10, 11);
+        int vy3 = rand.Next(-10, 11);
+        int vx4 = rand.Next(-10, 11);
+        int vy4 = rand.Next(-10, 11);
         static Random rand = new Random();
 
         public Form1()
@@ -22,6 +26,10 @@ namespace v0630
 
             label1.Left = rand.Next(0, ClientSize.Width- label1.Width);
             label1.Top = rand.Next(0, ClientSize.Height-label1.Height);
+            label3.Left = rand.Next(0, ClientSize.Width - label3.Width);
+            label3.Top = rand.Next(0, ClientSize.Height - label3.Height);
+            label4.Left = rand.Next(0, ClientSize.Width - label4.Width);
+            label4.Top = rand.Next(0, ClientSize.Height - label4.Height);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -31,23 +39,23 @@ namespace v0630
             label2.Left = fpos.X - label2.Width / 2;
             label2.Top = fpos.Y - label2.Height / 2;
             {
-                label4.Left += vx;
-                label4.Top += vy;
+                label4.Left += vx4;
+                label4.Top += vy4;
                 if (label4.Left < 0)
                 {
-                    vx = -vx;
+                    vx4 = -vx4;
                 }
                 if (label4.Top < 0)
                 {
-                    vy = -vy;
+                    vy4 = -vy4;
                 }
                 if (label4.Right > ClientSize.Width)
                 {
-                    vx = -vx;
+                    vx4 = -vx4;
                 }
                 if (label4.Bottom > ClientSize.Height)
                 {
-                    vy = -vy;
+                    vy4 = -vy4;
                     if ((fpos.X >= label4.Left)
                         && (fpos.X < label4.Right)
                         && (fpos.Y >= label4.Top)
@@ -59,23 +67,23 @@ namespace v0630
                 }
             }
             {
-                label3.Left += vx;
-                label3.Top += vy;
+                label3.Left += vx3;
+                label3.Top += vy3;
                 if (label3.Left < 0)
                 {
-                    vx = -vx;
+                    vx3 = -vx3;
                 }
                 if (label3.Top < 0)
                 {
-                    vy = -vy;
+                    vy3 = -vy3;
                 }
                 if (label3.Right > ClientSize.Width)
                 {
-                    vx = -vx;
+                    vx3 = -vx3;
                 }
                 if (label3.Bottom > ClientSize.Height)
                 {
-                    vy = -vy;
+                    vy3 = -vy3;
                     if ((fpos.X >= label3.Left)
                         && (fpos.X < label3.Right)
                         && (fpos.Y >= label3.Top)
@@ -86,32 +94,34 @@ namespace v0630
                     }
                 }
             }
-            label1.Left += vx;
-            label1.Top += vy;
-            if (label1.Left < 0)
             {
-                vx = -vx;
-            }
-            if (label1.Top < 0)
-            {
-                vy = -vy;
-            }
-            if (label1.Right > ClientSize.Width)
-            {
-                vx = -vx;
-            }
-            if (label1.Bottom > ClientSize.Height)
-            {
-                vy = -vy;
-                if ((fpos.X >= label1.Left)
-                    && (fpos.X < label1.Right)
-                    && (fpos.Y >= label1.Top)
-                    && (fpos.Y < label1.Bottom)
-                    )
+                label1.Left += vx;
+                label1.Top += vy;
+                if (label1.Left < 0)
                 {
-                    timer1.Enabled = false;
+                    vx = -vx;
                 }
+                if (label1.Top < 0)
+                {
+                    vy = -vy;
+                }
+                if (label1.Right > ClientSize.Width)
+                {
+                    vx = -vx;
+                }
+                if (label1.Bottom > ClientSize.Height)
+                {
+                    vy = -vy;
+                    if ((fpos.X >= label1.Left)
+                        && (fpos.X < label1.Right)
+                        && (fpos.Y >= label1.Top)
+                        && (fpos.Y < label1.Bottom)
+                        )
+                    {
+                        timer1.Enabled = false;
+                    }
 
+                }
             }
         }
 
