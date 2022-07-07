@@ -13,19 +13,27 @@ namespace v0630
     public partial class Form1 : Form
     {
         static Random rand = new Random();
-        int[] vx = new int[3];
-        int[] vy = new int[3];
+        int[] vx = new int[100];
+        int[] vy = new int[100];
+        Label[] labels = new Label[100];
 
         public Form1()
         {
             InitializeComponent();
 
-            vx[0] = rand.Next(-20, 21);
-            vy[0] = rand.Next(-20, 21);
-            vx[1] = rand.Next(-20, 21);
-            vy[1] = rand.Next(-20, 21);
-            vx[2] = rand.Next(-20, 21);
-            vy[2] = rand.Next(-20, 21);
+            for (int i = 0; i < 100; i++)
+            {
+                vx[i] = rand.Next(-20, 21);
+                vy[i] = rand.Next(-20, 21);
+
+                labels[i] = new Label();
+                labels[i].AutoSize = true;
+                labels[i].Text = "★";
+                Controls.Add(labels[i]);
+
+                labels[i].Left = rand.Next(ClientSize.Width - labels[i].Width);
+                labels[i].Top = rand.Next(ClientSize.Height - labels[i].Height);
+            }
 
             label1.Left = rand.Next(0, ClientSize.Width- label1.Width);
             label1.Top = rand.Next(0, ClientSize.Height-label1.Height);
@@ -41,6 +49,38 @@ namespace v0630
             Point fpos = PointToClient(spos);
             label2.Left = fpos.X - label2.Width / 2;
             label2.Top = fpos.Y - label2.Height / 2;
+            label4.Left += vx[2];
+            label4.Top += vy[2];
+            /*for (int i = 0; i < 100; i++)
+            {
+                labels[i].Left += vx[i];
+                labels[i].Top += vy[i];
+                if (labels[i].Left < 0)
+                {
+                    vx[i] = -vx[i];
+                }
+                if (labels[i].Top < 0)
+                {
+                    vy[i] = -vy[i];
+                }
+                if (labels[i].Right > ClientSize.Width)
+                {
+                    vx[i] = -vx[i];
+                }
+                if (labels[i].Bottom > ClientSize.Height)
+                {
+                    vy[i] = -vy[i];
+                    if ((fpos.X >= labels[i].Left)
+                        && (fpos.X < labels[i].Right)
+                        && (fpos.Y >= labels[i].Top)
+                        && (fpos.Y < labels[i].Bottom)
+                        )
+                    {
+                        labels[i].Visible = false;
+                    }
+                }
+            }*/
+        
             {
                 label4.Left += vx[2];
                 label4.Top += vy[2];
