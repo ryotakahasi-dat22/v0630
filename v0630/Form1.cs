@@ -13,10 +13,10 @@ namespace v0630
     public partial class Form1 : Form
     {
         static Random rand = new Random();
-        int[] vx = new int[100];
-        int[] vy = new int[100];
-        Label[] labels = new Label[100];
-        int kazu = 10;
+        static int kazu => 10;
+        int[] vx = new int[kazu];
+        int[] vy = new int[kazu];
+        Label[] labels = new Label[kazu];
 
         public Form1()
         {
