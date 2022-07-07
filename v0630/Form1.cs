@@ -16,12 +16,13 @@ namespace v0630
         int[] vx = new int[100];
         int[] vy = new int[100];
         Label[] labels = new Label[100];
+        int kazu = 10;
 
         public Form1()
         {
             InitializeComponent();
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < kazu; i++)
             {
                 vx[i] = rand.Next(-20, 21);
                 vy[i] = rand.Next(-20, 21);
@@ -51,7 +52,7 @@ namespace v0630
             label2.Top = fpos.Y - label2.Height / 2;
             label4.Left += vx[2];
             label4.Top += vy[2];
-            /*for (int i = 0; i < 100; i++)
+            for (int i = 0; i < kazu; i++)
             {
                 labels[i].Left += vx[i];
                 labels[i].Top += vy[i];
@@ -79,7 +80,7 @@ namespace v0630
                         labels[i].Visible = false;
                     }
                 }
-            }*/
+            }
         
             {
                 label4.Left += vx[2];
